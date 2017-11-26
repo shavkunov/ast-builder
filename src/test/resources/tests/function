@@ -1,0 +1,10 @@
+fun bar(m) {
+    write(m + n);
+};
+
+fun foo(n) {
+    ans := bar(1);
+};
+
+input := read();
+write(foo(input));

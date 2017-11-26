@@ -1,0 +1,12 @@
+File Coordinates(line=1, position=0):
+Function Coordinates(line=1, position=0):
+  Identifier Coordinates(line=1, position=1): bar
+Parameters :
+    Identifier Coordinates(line=3, position=3): m
+  Block Coordinates(line=2, position=4):
+    WriteCall Coordinates(line=2, position=4):
+      BinaryExpression Coordinates(line=2, position=10):
+        Identifier Coordinates(line=2, position=10): m
+        op : +
+        Identifier Coordinates(line=2, position=14): n
+Block Coordinates(line=3, position=1):

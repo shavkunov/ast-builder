@@ -1,0 +1,13 @@
+File Coordinates(line=1, position=0):
+Block Coordinates(line=1, position=0):
+  Assignment Coordinates(line=1, position=0):
+    Identifier Coordinates(line=0, position=0): a
+    Literal Coordinates(line=1, position=5): 5
+  IfStatement Coordinates(line=2, position=0):
+    BinaryExpression Coordinates(line=2, position=4):
+      Literal Coordinates(line=2, position=4): 4
+      op : >
+      Literal Coordinates(line=2, position=8): 5
+    Block Coordinates(line=3, position=4):
+      WriteCall Coordinates(line=3, position=4):
+        Identifier Coordinates(line=3, position=10): a
