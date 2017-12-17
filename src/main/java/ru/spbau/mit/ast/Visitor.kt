@@ -25,13 +25,13 @@ interface Visitor<out T> {
 
     fun visitWriteCall(writeCall: WriteCall): T
 
+    fun visitReadCall(readCall: ReadCall): T
+
     fun visitBinaryExpression(binaryExpression: BinaryExpression): T
 
     fun visitIdentifier(identifier: Identifier): T
 
     fun visitLiteral(literal: Literal): T
-
-    fun visitReadExpression(readExpression: ReadExpression): T
 
     fun visitInnerExpression(innerExpression: InnerExpression): T
 }

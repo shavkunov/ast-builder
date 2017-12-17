@@ -43,6 +43,14 @@ data class WriteCall(
             visitor.visitWriteCall(this)
 }
 
+data class ReadCall(
+        val identifier: Identifier,
+        val coordinates: Coordinates
+) : Statement {
+    override fun <T> accept(visitor: Visitor<T>): T =
+            visitor.visitReadCall(this)
+}
+
 data class FunctionCall(
         val funIdentifier: Identifier,
         val arguments: List<Expression>,

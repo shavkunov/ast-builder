@@ -49,6 +49,13 @@ class AstPrinter(private val printer: PrintStream = System.out) : Visitor<Unit> 
         decreaseIndent()
     }
 
+    override fun visitReadCall(readCall: ReadCall) {
+        printer.println("${indent}ReadCall ${readCall.coordinates}:")
+        increaseIndent()
+        visit(readCall.identifier)
+        decreaseIndent()
+    }
+
     override fun visitFunctionCall(functionCall: FunctionCall) {
         printer.println("${indent}FunctionCall ${functionCall.coordinates}:")
         increaseIndent()
@@ -98,10 +105,6 @@ class AstPrinter(private val printer: PrintStream = System.out) : Visitor<Unit> 
 
     override fun visitLiteral(literal: Literal) {
         printer.println("${indent}Literal ${literal.coordinates}: ${literal.text}")
-    }
-
-    override fun visitReadExpression(readExpression: ReadExpression) {
-        printer.println("${indent}Read ${readExpression.coordinates}")
     }
 
     private fun increaseIndent() {

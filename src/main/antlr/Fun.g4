@@ -56,21 +56,33 @@ assignment
 
 expression
     : IDENTIFIER
+        # variableExpression
+
     | LITERAL
-    | innerExpression
+        # literalExpression
+
+    | '(' expression ')'
+        # innerExpression
 
     | leftOp = expression operation = ('*' | '/' | '%') rightOp = expression
+        # binaryExpression
+
     | leftOp = expression operation = ('+' | '-') rightOp = expression
+        # binaryExpression
+
     | leftOp = expression operation = ('<' | '>' | '<=' | '>=') rightOp = expression
+        # binaryExpression
+
     | leftOp = expression operation = ('==' | '!=') rightOp = expression
+        # binaryExpression
+
     | leftOp = expression operation = '&&' rightOp = expression
+        # binaryExpression
+
     | leftOp = expression operation = '||' rightOp = expression
+        # binaryExpression
     ;
 
-
-innerExpression
-    : '(' expression ')'
-    ;
 
 arguments
     : (IDENTIFIER (',' IDENTIFIER)*)?

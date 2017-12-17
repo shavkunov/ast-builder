@@ -33,12 +33,6 @@ data class Literal(
     }
 }
 
-class ReadExpression(val coordinates: Coordinates) : Expression {
-    override fun <T> accept(visitor: Visitor<T>): T {
-        return visitor.visitReadExpression(this)
-    }
-}
-
 data class InnerExpression(
         val expression: Expression,
         val coordinates: Coordinates
