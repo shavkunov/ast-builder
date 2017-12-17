@@ -1,7 +1,7 @@
 grammar Fun;
 
 file
-    :   (function)* block
+    :   (function)* block EOF
     ;
 
 function
@@ -18,6 +18,7 @@ blockWithBraces
 
 statement
     :   functionCall
+    |   readCall
     |   writeCall
     |   assignment
     |   whileCycle
@@ -30,6 +31,10 @@ functionCall
 
 writeCall
     : 'write' '(' expression ')' SEMICOLON
+    ;
+
+readCall
+    : 'read' '(' IDENTIFIER ')' SEMICOLON
     ;
 
 parameterNames
@@ -53,7 +58,6 @@ expression
     : IDENTIFIER
     | LITERAL
     | innerExpression
-    | readExpression
 
     | leftOp = expression operation = ('*' | '/' | '%') rightOp = expression
     | leftOp = expression operation = ('+' | '-') rightOp = expression
@@ -62,10 +66,7 @@ expression
     | leftOp = expression operation = '&&' rightOp = expression
     | leftOp = expression operation = '||' rightOp = expression
     ;
-
-readExpression
-    : 'read' '(' ')'
-    ;
+    
 
 innerExpression
     : '(' expression ')'
