@@ -66,14 +66,14 @@ expression
     | leftOp = expression operation = '&&' rightOp = expression
     | leftOp = expression operation = '||' rightOp = expression
     ;
-    
+
 
 innerExpression
     : '(' expression ')'
     ;
 
 arguments
-    : (expression (',' expression)*)?
+    : (IDENTIFIER (',' IDENTIFIER)*)?
     ;
 
 SEMICOLON : ';';
