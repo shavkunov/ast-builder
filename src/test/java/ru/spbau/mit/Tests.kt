@@ -30,4 +30,26 @@ class Tests{
             assertEquals(answerContent, actualOutput)
         }
     }
+
+    @Test
+    fun errorTest() {
+        val test = testPath.resolve("tests")
+
+        for (file in test.toFile().list()) {
+            if (!file.startsWith("error")) {
+                continue
+            }
+
+            val byteOutputStream = ByteArrayOutputStream()
+            val printStream = PrintStream(byteOutputStream)
+
+            try {
+                printAst(test.resolve(file).toAbsolutePath().toString(), printStream)
+            } catch (e: ParsingException) {
+                // it's ok
+            } catch (e: Exception) {
+                throw e
+            }
+        }
+    }
 }
