@@ -1,0 +1,18 @@
+File Coordinates(line=1, position=0):
+Block Coordinates(line=1, position=0):
+  ReadCall Coordinates(line=1, position=0):
+    Identifier Coordinates(line=2, position=2): a
+  WhileCycle Coordinates(line=3, position=0):
+    BinaryExpression Coordinates(line=3, position=7):
+      Identifier Coordinates(line=3, position=7): a
+      op : <
+      Literal Coordinates(line=3, position=11): 5
+    Block Coordinates(line=4, position=4):
+      WriteCall Coordinates(line=4, position=4):
+        Identifier Coordinates(line=4, position=10): a
+      Assignment Coordinates(line=6, position=4):
+        Identifier Coordinates(line=17, position=17): a
+        BinaryExpression Coordinates(line=6, position=9):
+          Identifier Coordinates(line=6, position=9): a
+          op : +
+          Literal Coordinates(line=6, position=13): 1

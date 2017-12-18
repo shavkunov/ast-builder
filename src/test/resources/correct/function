@@ -9,4 +9,15 @@ Parameters :
         Identifier Coordinates(line=2, position=10): m
         op : +
         Identifier Coordinates(line=2, position=14): n
-Block Coordinates(line=3, position=1):
+Function Coordinates(line=5, position=0):
+  Identifier Coordinates(line=15, position=15): foo
+Parameters :
+    Identifier Coordinates(line=17, position=17): n
+  Block Coordinates(line=6, position=4):
+    Assignment Coordinates(line=6, position=4):
+      Identifier Coordinates(line=20, position=20): a
+      Literal Coordinates(line=6, position=9): 1
+    FunctionCall Coordinates(line=7, position=4):
+      Identifier Coordinates(line=24, position=24): bar
+      Identifier Coordinates(line=26, position=26): a
+Block Coordinates(line=8, position=1):

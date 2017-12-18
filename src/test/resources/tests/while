@@ -1,0 +1,7 @@
+read(a);
+
+while (a < 5) {
+    write(a);
+
+    a := a + 1;
+}

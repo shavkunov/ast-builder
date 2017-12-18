@@ -1,0 +1,5 @@
+File Coordinates(line=1, position=0):
+Block Coordinates(line=1, position=0):
+  Assignment Coordinates(line=1, position=0):
+    Identifier Coordinates(line=0, position=0): a
+    Identifier Coordinates(line=1, position=5): b

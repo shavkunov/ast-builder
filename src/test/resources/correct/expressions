@@ -1,0 +1,20 @@
+File Coordinates(line=1, position=0):
+Block Coordinates(line=1, position=0):
+  Assignment Coordinates(line=1, position=0):
+    Identifier Coordinates(line=0, position=0): x
+    BinaryExpression Coordinates(line=1, position=5):
+      Literal Coordinates(line=1, position=5): 3
+      op : +
+      Literal Coordinates(line=2, position=0): 1
+  Assignment Coordinates(line=4, position=0):
+    Identifier Coordinates(line=6, position=6): a
+    BinaryExpression Coordinates(line=4, position=5):
+      BinaryExpression Coordinates(line=4, position=5):
+        Identifier Coordinates(line=4, position=5): a
+        op : !=
+        Identifier Coordinates(line=4, position=10): a
+      op : &&
+      BinaryExpression Coordinates(line=4, position=15):
+        Identifier Coordinates(line=4, position=15): b
+        op : ==
+        Identifier Coordinates(line=4, position=20): b

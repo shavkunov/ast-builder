@@ -53,9 +53,8 @@ class AstVisitor : FunBaseVisitor<AstNode>() {
     }
 
     override fun visitVariableExpression(context: FunParser.VariableExpressionContext): AstNode {
-        return Identifier(context.IDENTIFIER().text, Coordinates(
-                context.IDENTIFIER().sourceInterval.a,
-                context.IDENTIFIER().sourceInterval.b))
+        val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
+        return Identifier(context.IDENTIFIER().text, coordinates)
     }
 
     override fun visitWhileCycle(context: FunParser.WhileCycleContext): AstNode {
