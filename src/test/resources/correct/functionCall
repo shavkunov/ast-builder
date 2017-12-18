@@ -2,6 +2,6 @@ File Coordinates(line=1, position=0):
 Block Coordinates(line=1, position=0):
   FunctionCall Coordinates(line=1, position=0):
     Identifier Coordinates(line=0, position=0): foo
-    Identifier Coordinates(line=2, position=2): a
-    Identifier Coordinates(line=4, position=4): b
-    Identifier Coordinates(line=6, position=6): c
+    Identifier Coordinates(line=1, position=4): a
+    Identifier Coordinates(line=1, position=7): b
+    Identifier Coordinates(line=1, position=10): c

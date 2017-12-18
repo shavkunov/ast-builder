@@ -34,4 +34,6 @@ interface Visitor<out T> {
     fun visitLiteral(literal: Literal): T
 
     fun visitInnerExpression(innerExpression: InnerExpression): T
+
+    fun visitReturnStatement(returnStatement: ReturnStatement): T
 }

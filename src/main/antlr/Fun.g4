@@ -17,24 +17,25 @@ blockWithBraces
     ;
 
 statement
-    :   functionCall
-    |   readCall
-    |   writeCall
-    |   assignment
+    :   returnStatement SEMICOLON
+    |   functionCall SEMICOLON
+    |   readCall SEMICOLON
+    |   writeCall SEMICOLON
+    |   assignment SEMICOLON
     |   whileCycle
     |   ifStatement
 ;
 
-functionCall
-    : IDENTIFIER '(' arguments ')' SEMICOLON
+returnStatement
+    : 'return' expression
     ;
 
 writeCall
-    : 'write' '(' expression ')' SEMICOLON
+    : 'write' '(' expression ')'
     ;
 
 readCall
-    : 'read' '(' IDENTIFIER ')' SEMICOLON
+    : 'read' '(' IDENTIFIER ')'
     ;
 
 parameterNames
@@ -50,13 +51,19 @@ ifStatement
     ;
 
 assignment
-    : IDENTIFIER ':=' expression SEMICOLON
+    : IDENTIFIER ':=' expression
     ;
 
+functionCall
+    : IDENTIFIER '(' arguments ')'
+    ;
 
 expression
     : IDENTIFIER
         # variableExpression
+
+    |   functionCall
+        # functionCallExpression
 
     | LITERAL
         # literalExpression
@@ -85,7 +92,7 @@ expression
 
 
 arguments
-    : (IDENTIFIER (',' IDENTIFIER)*)?
+    : (expression (',' expression)*)?
     ;
 
 SEMICOLON : ';';

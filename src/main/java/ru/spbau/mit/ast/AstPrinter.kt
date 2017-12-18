@@ -64,6 +64,13 @@ class AstPrinter(private val printer: PrintStream = System.out) : Visitor<Unit> 
         decreaseIndent()
     }
 
+    override fun visitReturnStatement(returnStatement: ReturnStatement) {
+        printer.println("${indent} Return ${returnStatement.coordinates}:")
+        increaseIndent()
+        visit(returnStatement.expression)
+        decreaseIndent()
+    }
+
     override fun visitWhileCycle(whileCycle: WhileCycle) {
         printer.println("${indent}WhileCycle ${whileCycle.coordinates}:")
         increaseIndent()

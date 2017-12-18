@@ -19,5 +19,5 @@ Parameters :
       Literal Coordinates(line=6, position=9): 1
     FunctionCall Coordinates(line=7, position=4):
       Identifier Coordinates(line=24, position=24): bar
-      Identifier Coordinates(line=26, position=26): a
+      Identifier Coordinates(line=7, position=8): a
 Block Coordinates(line=8, position=1):

@@ -18,6 +18,10 @@ class Tests{
         val test = testPath.resolve("tests")
 
         for (file in test.toFile().list()) {
+            if (file.startsWith("error")) {
+                continue
+            }
+
             val byteOutputStream = ByteArrayOutputStream()
             val printStream = PrintStream(byteOutputStream)
             printAst(test.resolve(file).toAbsolutePath().toString(), printStream)

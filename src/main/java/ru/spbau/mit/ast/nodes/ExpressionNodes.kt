@@ -40,3 +40,13 @@ data class InnerExpression(
     override fun <T> accept(visitor: Visitor<T>): T =
             visitor.visitInnerExpression(this)
 }
+
+data class FunctionCall(
+        val funIdentifier: Identifier,
+        val arguments: List<Expression>,
+        val coordinates: Coordinates
+) : Expression {
+    override fun <T> accept(visitor: Visitor<T>): T {
+        return visitor.visitFunctionCall(this)
+    }
+}

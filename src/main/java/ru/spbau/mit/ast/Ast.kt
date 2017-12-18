@@ -26,15 +26,15 @@ class AstVisitor : FunBaseVisitor<AstNode>() {
         val statements = context.statement().map { visit(it) as Statement }
         val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
 
-        return Block(statements.toList(), coordinates)
+        return Block(statements, coordinates)
     }
 
     override fun visitBlockWithBraces(context: FunParser.BlockWithBracesContext): AstNode {
         return visit(context.block())
     }
 
-    override fun visitStatement(context: FunParser.StatementContext): AstNode {
-        return visitChildren(context) as Statement
+    override fun visitFunctionCallExpression(context: FunParser.FunctionCallExpressionContext): AstNode {
+        return visitFunctionCall(context.functionCall())
     }
 
     override fun visitFunction(context: FunParser.FunctionContext): AstNode {
@@ -85,17 +85,19 @@ class AstVisitor : FunBaseVisitor<AstNode>() {
     }
 
     override fun visitFunctionCall(context: FunParser.FunctionCallContext): AstNode {
-        val arguments = context.arguments()
-                               .IDENTIFIER().map {
-                Identifier(it.text,
-                        Coordinates(it.sourceInterval.a, it.sourceInterval.b))
-        }
-
-        val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
         val identifier = Identifier(context.IDENTIFIER().text,
                 Coordinates(context.IDENTIFIER().sourceInterval.a, context.IDENTIFIER().sourceInterval.b))
 
+        val arguments = context.arguments().expression().map { visit(it) as Expression }
+        val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
+
         return FunctionCall(identifier, arguments, coordinates)
+    }
+
+    override fun visitReturnStatement(context: FunParser.ReturnStatementContext): AstNode {
+        val expression = visit(context.expression()) as Expression
+        val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
+        return ReturnStatement(expression, coordinates)
     }
 
     override fun visitInnerExpression(context: FunParser.InnerExpressionContext): AstNode {
@@ -104,7 +106,9 @@ class AstVisitor : FunBaseVisitor<AstNode>() {
 
     override fun visitWriteCall(context: FunParser.WriteCallContext): AstNode {
         val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
-        return WriteCall(visit(context.expression()) as Expression, coordinates)
+        val expression = visit(context.expression()) as Expression
+
+        return WriteCall(expression, coordinates)
     }
 
     override fun visitReadCall(context: FunParser.ReadCallContext): AstNode {
@@ -129,4 +133,7 @@ class AstVisitor : FunBaseVisitor<AstNode>() {
         val visitedRight = visit(rightOp) as Expression
         return BinaryExpression(visitedLeft, visitedRight, operation.text, coordinates)
     }
+
+    override fun aggregateResult(aggregate: AstNode?, nextResult: AstNode?): AstNode? =
+            aggregate ?: nextResult
 }

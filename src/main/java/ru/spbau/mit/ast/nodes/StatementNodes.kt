@@ -51,12 +51,10 @@ data class ReadCall(
             visitor.visitReadCall(this)
 }
 
-data class FunctionCall(
-        val funIdentifier: Identifier,
-        val arguments: List<Expression>,
+data class ReturnStatement(
+        val expression: Expression,
         val coordinates: Coordinates
-) : Statement {
-    override fun <T> accept(visitor: Visitor<T>): T {
-        return visitor.visitFunctionCall(this)
-    }
+    ) : Statement {
+    override fun <T> accept(visitor: Visitor<T>): T =
+                visitor.visitReturnStatement(this)
 }
