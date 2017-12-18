@@ -7,7 +7,7 @@ Parameters :
     Assignment Coordinates(line=2, position=4):
       Identifier Coordinates(line=6, position=6): a
       Literal Coordinates(line=2, position=9): 1
-     Return Coordinates(line=3, position=4):
+    Return Coordinates(line=3, position=4):
       BinaryExpression Coordinates(line=3, position=11):
         Identifier Coordinates(line=3, position=11): n
         op : +
