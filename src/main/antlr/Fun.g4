@@ -17,8 +17,7 @@ blockWithBraces
     ;
 
 statement
-    :   returnStatement SEMICOLON
-    |   functionCall SEMICOLON
+    :   functionCall SEMICOLON
     |   readCall SEMICOLON
     |   writeCall SEMICOLON
     |   assignment SEMICOLON

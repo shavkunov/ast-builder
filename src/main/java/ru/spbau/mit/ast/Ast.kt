@@ -94,12 +94,6 @@ class AstVisitor : FunBaseVisitor<AstNode>() {
         return FunctionCall(identifier, arguments, coordinates)
     }
 
-    override fun visitReturnStatement(context: FunParser.ReturnStatementContext): AstNode {
-        val expression = visit(context.expression()) as Expression
-        val coordinates = Coordinates(context.start.line, context.start.charPositionInLine)
-        return ReturnStatement(expression, coordinates)
-    }
-
     override fun visitInnerExpression(context: FunParser.InnerExpressionContext): AstNode {
         return visit(context.expression())
     }
